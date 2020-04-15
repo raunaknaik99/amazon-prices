@@ -1,0 +1,23 @@
+{
+        "name": "amazon_prices",
+        "version": "1.0.0",
+        "description": "Website which notifies the user whenever the price of an amazon product the user wants falls below an amount which the user sets.",
+        "main": "app.js",
+        "scripts": {
+                "client-install": "npm install --prefix client",
+                "start": "node app.js",
+                "server": "nodemon app.js",
+                "client": "npm run serve --prefix client",
+                "dev": "concurrently \"npm run server\" \"npm run client\""
+        },
+        "author": "JerryMouse",
+        "license": "MIT",
+        "dependencies": {
+                "cors": "^2.8.5",
+                "express": "^4.17.1",
+                "mongoose": "^5.9.9"
+        },
+        "devDependencies": {
+                "nodemon": "^2.0.3"
+        }
+}
