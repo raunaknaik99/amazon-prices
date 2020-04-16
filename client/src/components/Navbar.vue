@@ -4,26 +4,50 @@
       <v-toolbar-title>Amazon Scraper</v-toolbar-title>
       <v-spacer></v-spacer>
       <div class="d-none d-md-flex">
-        <v-btn text rounded>Register</v-btn>
         <v-btn to="/users/login" text rounded>Login</v-btn>
-        <v-btn text rounded>About</v-btn>
+        <v-btn to="/users/register" text rounded>Register</v-btn>
+        <v-btn to="/about" text rounded>About</v-btn>
       </div>
       <v-toolbar-side-icon class="d-md-none" @click="drawer = !drawer">
         <v-icon>mdi-reorder-horizontal</v-icon>
       </v-toolbar-side-icon>
     </v-app-bar>
-    <v-navigation-drawer disable-resize-watcher v-model="drawer" right app></v-navigation-drawer>
+    <v-navigation-drawer
+      v-touch="{
+      left: () => swipe('Left'),
+      right: () => swipe('Right')}"
+      disable-resize-watcher
+      v-model="drawer"
+      right
+      app
+      v-if="swipeDirection === 'Left'"
+    >
+      <v-list>
+        <v-list-item to="/users/login">
+          <v-list-item-title>Login</v-list-item-title>
+        </v-list-item>
+        <v-list-item to="/users/register">
+          <v-list-item-title>Register</v-list-item-title>
+        </v-list-item>
+        <v-list-item to="/about">
+          <v-list-item-title>About</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
   </div>
 </template>
 
 <script>
-import { reactive, toRefs } from "@vue/composition-api";
+import { ref } from "@vue/composition-api";
 export default {
   setup() {
-    const event = reactive({
-      drawer: false
-    });
-    return { ...toRefs(event) };
+    const drawer = ref(false);
+
+    const swipeDirection = ref("None");
+    function swipe(direction) {
+      this.swipeDirection.value = direction;
+    }
+    return { swipeDirection, drawer, swipe };
   }
 };
 </script>
