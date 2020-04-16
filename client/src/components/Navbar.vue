@@ -1,13 +1,6 @@
 <template>
   <div>
-    <v-app-bar
-      v-touch="{
-      left: () => swipe('Left'),
-      right: () => swipe('Right')}"
-      color="teal lighten-3"
-      dark
-      app
-    >
+    <v-app-bar color="teal lighten-3" dark app>
       <v-toolbar-title>Amazon Scraper</v-toolbar-title>
       <v-spacer></v-spacer>
       <div class="d-none d-md-flex">
@@ -19,13 +12,7 @@
         <v-icon>mdi-reorder-horizontal</v-icon>
       </v-toolbar-side-icon>
     </v-app-bar>
-    <v-navigation-drawer
-      disable-resize-watcher
-      v-model="drawer"
-      right
-      app
-      v-if="swipeDirection === 'Left'"
-    >
+    <v-navigation-drawer disable-resize-watcher v-model="drawer" right app>
       <v-list>
         <v-list-item to="/users/login">
           <v-list-item-title>Login</v-list-item-title>
@@ -46,12 +33,7 @@ import { ref } from "@vue/composition-api";
 export default {
   setup() {
     const drawer = ref(false);
-
-    const swipeDirection = ref("None");
-    function swipe(direction) {
-      this.swipeDirection.value = direction;
-    }
-    return { swipeDirection, drawer, swipe };
+    return { drawer };
   }
 };
 </script>
