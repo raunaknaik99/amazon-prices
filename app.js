@@ -21,8 +21,8 @@ app.get(/.*/, (req, res) => {
 
 const authRoutes = require("./routes/users.js");
 
-const port = 3000 || process.env.PORT;
+const port = process.env.PORT || 3000;
 
 app.listen(port, (req, res) => {
-        console.log("The server has started...");
+        console.log("The server has started on port " + port);
 });
