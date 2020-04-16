@@ -4,6 +4,9 @@
         "description": "Website which notifies the user whenever the price of an amazon product the user wants falls below an amount which the user sets.",
         "main": "app.js",
         "scripts": {
+                "serve": "vue-cli-service serve --prefix client",
+                "build": "vue-cli-service build --prefix client",
+                "lint": "vue-cli-service lint --prefix client",
                 "client-install": "npm install --prefix client",
                 "start": "node app.js",
                 "server": "nodemon app.js",
