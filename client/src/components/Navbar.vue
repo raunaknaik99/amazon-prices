@@ -1,6 +1,13 @@
 <template>
   <div>
-    <v-app-bar color="teal lighten-3" dark app>
+    <v-app-bar
+      v-touch="{
+      left: () => swipe('Left'),
+      right: () => swipe('Right')}"
+      color="teal lighten-3"
+      dark
+      app
+    >
       <v-toolbar-title>Amazon Scraper</v-toolbar-title>
       <v-spacer></v-spacer>
       <div class="d-none d-md-flex">
@@ -13,9 +20,6 @@
       </v-toolbar-side-icon>
     </v-app-bar>
     <v-navigation-drawer
-      v-touch="{
-      left: () => swipe('Left'),
-      right: () => swipe('Right')}"
       disable-resize-watcher
       v-model="drawer"
       right
