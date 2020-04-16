@@ -3,7 +3,7 @@
     <v-app-bar color="teal lighten-3" dark app>
       <v-toolbar-title>Amazon Scraper</v-toolbar-title>
       <v-spacer></v-spacer>
-      <div class="d-sm-none d-md-flex">
+      <div class="d-none d-md-flex">
         <v-btn text rounded>Register</v-btn>
         <v-btn to="/users/login" text rounded>Login</v-btn>
         <v-btn text rounded>About</v-btn>
