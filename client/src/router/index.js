@@ -4,12 +4,12 @@ import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
 const routes = [{
-                path: '/users/login',
+                path: '/accounts/login',
                 name: 'Login',
                 component: () => import('../views/Login.vue')
         },
         {
-                path: '/users/register',
+                path: '/accounts/register',
                 name: 'Register',
                 component: () => import('../views/Register.vue')
         },
@@ -17,7 +17,12 @@ const routes = [{
                 path: '/about',
                 name: 'About',
                 component: () => import('../views/About.vue')
+        },
+        {
+                path: '/',
+                redirect: "/accounts/login"
         }
+
 ]
 
 const router = new VueRouter({

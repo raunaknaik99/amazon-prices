@@ -4,9 +4,12 @@ import router from './router'
 import store from './store'
 import VueCompositionApi from "@vue/composition-api";
 import vuetify from './plugins/vuetify';
+import axios from 'axios';
 
 Vue.use(VueCompositionApi);
 Vue.config.productionTip = false
+
+axios.defaults.baseURL = "http://localhost:3000";
 
 new Vue({
   router,
