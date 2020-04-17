@@ -6,7 +6,7 @@ const express = require("express"),
 
 const app = express();
 
-app.use(express.static(__dirname + "/public/"));
+app.use(express.static(__dirname + "public/"));
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({
@@ -25,7 +25,7 @@ mongoose.connect(
 const authRoutes = require("./routes/auth.js");
 app.use("/accounts", authRoutes);
 app.get("/.*/", (req, res) => {
-        res.sendFile(path.join(__dirname, '/public/index.html'))
+        res.sendFile(path.join(__dirname, 'public/index.html'))
 })
 
 const port = process.env.PORT || 3000;
