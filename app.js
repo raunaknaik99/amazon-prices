@@ -24,7 +24,7 @@ mongoose.connect(
 
 const authRoutes = require("./routes/auth.js");
 app.use("/accounts", authRoutes);
-app.get("*", (req, res) => {
+app.get("/.*/", (req, res) => {
         res.sendFile(path.join(__dirname, '/public/index.html'))
 })
 
