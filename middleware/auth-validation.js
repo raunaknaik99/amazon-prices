@@ -14,7 +14,7 @@ exports.validateLogin = [
 
 //VALIDATE POST REGISTER REQUEST
 exports.validateRegister = [
-    check('email').isEmail().withMessage('Please enter a valid email').custom((value, {
+    check('email').isEmail().withMessage('Please enter a valid email').normalizeEmail().custom((value, {
         req
     }) => {
         return User.findOne({

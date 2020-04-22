@@ -34,14 +34,16 @@ exports.postLogin = (req, res, next) => {
                     email: user.email,
                     username: user.username
                 }
+                const expirationTimer = 3600;
                 jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {
-                    expiresIn: 10
+                    expiresIn: expirationTimer
                 }, (err, token) => {
                     return res.status(200).json({
                         success: true,
                         user,
                         msg: 'Login successfull',
-                        token: `Bearer ${token}`
+                        token: `Bearer ${token}`,
+                        expiresIn: expirationTimer
                     })
                 });
             } else {
@@ -95,18 +97,5 @@ exports.postRegister = async (req, res, next) => {
                 msg: "Successfully signed up"
             });
         }
-    })
-}
-
-//JWT AUTHENTICATION MIDDLEWARE
-exports.authenticateToken = (req, res, next) => {
-    const authHeader = req.headers['Authorization'];
-    const token = authHeader && authHeader.split(" ")[1];
-    if (token == null) return res.status(401);
-
-    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
-        if (err) return res.status(403);
-        req.user = user;
-        next();
     })
 }

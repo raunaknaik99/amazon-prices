@@ -10,6 +10,11 @@ const productSchema = new mongoose.Schema({
     },
     price: {
         type: Number
+    },
+    creator: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
     }
 }, {
     timestamps: true
