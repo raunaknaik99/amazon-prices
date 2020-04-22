@@ -28,11 +28,11 @@ const profileRoutes = require("./routes/profile");
 app.use(authRoutes);
 app.use(profileRoutes);
 
-const port = process.env.PORT || 3000;
-
 app.get("*", (req, res) => {
         res.sendFile(path.join(__dirname, "public/index.html"));
 });
+
+const port = process.env.PORT || 3000;
 
 app.listen(port, (req, res) => {
         console.log("The server has started on port " + port)
